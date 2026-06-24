@@ -6,6 +6,7 @@
 - Per-host panels (compute, storage, virtualization, endpoints)
 - Visual alerts for unhealthy containers or unreachable hosts
 - Rolling event log of recent actions
+- **Network Topology panel** — a lightweight live diagram of the lab (Mini-PC, Dell Server, Proxmox, Adrian PC, HP) with animated packets flowing along healthy links, color-coded green/yellow/red from the same SSH/Tailscale reachability data used elsewhere on the dashboard
 
 ## Monitoring
 

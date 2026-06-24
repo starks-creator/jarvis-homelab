@@ -19,6 +19,7 @@ As a homelab grows beyond a single machine, operational visibility becomes fragm
 - Snapshot and maintenance operations
 - Event logging and audit history
 - Screenshot Mode — one-click redaction of IPs, MAC addresses, hostnames, and usernames for safely sharing the dashboard publicly
+- Live network topology diagram with animated, status-colored links between hosts
 
 ## Technology Stack
 
