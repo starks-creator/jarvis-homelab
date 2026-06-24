@@ -41,3 +41,4 @@
 - All action endpoints require authentication
 - Higher-risk actions gated behind an approval step
 - Every action attempt is logged for auditability
+- **Screenshot Mode** — a one-click, client-side toggle that redacts IPs, MAC addresses, hostnames, and usernames so the dashboard can be safely captured for documentation or sharing (see [screenshots.md](screenshots.md))

@@ -18,6 +18,7 @@ As a homelab grows beyond a single machine, operational visibility becomes fragm
 - Local AI service monitoring (Ollama)
 - Snapshot and maintenance operations
 - Event logging and audit history
+- Screenshot Mode — one-click redaction of IPs, MAC addresses, hostnames, and usernames for safely sharing the dashboard publicly
 
 ## Technology Stack
 
