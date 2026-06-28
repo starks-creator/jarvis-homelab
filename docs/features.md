@@ -2,44 +2,40 @@
 
 ## Dashboard
 
-- Single-page status view with live health summary
-- Per-host panels (compute, storage, virtualization, endpoints)
+- **Real-time infrastructure dashboard** — unified health score, container count, VM status, and AI model count at a glance
+- Single-page status view that auto-refreshes every 5 seconds
+- Per-host panels for compute, storage, virtualization, and AI services
 - Visual alerts for unhealthy containers or unreachable hosts
-- Rolling event log of recent actions
-- **Network Topology panel** — a lightweight live diagram of the lab (Mini-PC, Dell Server, Proxmox, Adrian PC, HP) with animated packets flowing along healthy links, color-coded green/yellow/red from the same SSH/Tailscale reachability data used elsewhere on the dashboard
+- **Network topology diagram** — animated live diagram of the lab (Flint 2 Router → Dell Server + Mini-PC → Proxmox) with status-colored, animated packet links
+- **Screenshot Mode** — one-click client-side toggle that redacts IPs, MAC addresses, hostnames, and usernames so the dashboard can be safely captured for documentation or sharing without a backend restart
 
 ## Monitoring
 
-- Continuous health checks across all hosts
-- Docker container status and alerting
-- Disk, memory, and uptime tracking per host
-- Graceful "unreachable" handling — one offline host doesn't break the dashboard
+- **Automated health monitoring** — continuous SSH-based checks across all hosts with graceful degradation when a host is offline (one offline machine never breaks the full dashboard)
+- **Docker container monitoring** — per-container health tracking with alerts for unhealthy or stopped services
+- **Proxmox VM monitoring** — live VM inventory and status from the hypervisor
+- **Jellyfin & ARR stack management** — service status visibility and one-click restarts for media services
+- **AI integration (Ollama)** — local LLM model list, sizes, and Open WebUI container health
+- Disk usage, memory utilization, and uptime per host
+- Rolling health score across all monitored nodes
 
-## Automation
+## Automation & Actions
 
-- One-click maintenance actions (service restarts, status refresh)
-- Wake-on-LAN for powered-down machines
-- Approval queue for higher-risk actions before they execute
-- Token-gated action API for safe use by scripts and scheduled jobs
+- **One-click recovery actions** — restart services, trigger VM snapshots, send daily reports, and more from the Actions panel
+- **Wake-on-LAN** — power on offline machines (Dell Server, workstations) directly from the dashboard
+- **Approval queue** — higher-risk actions route through an approve/reject step before executing, adding a human checkpoint
+- Token-gated action API for safe use from scripts and scheduled jobs
+- Forced status refresh across all hosts on demand
 
-## Virtualization
+## Notifications & Reporting
 
-- Proxmox VM inventory and status
-- On-demand VM snapshots ahead of risky changes
-
-## AI Integration
-
-- Local LLM status monitoring via Ollama
-- Foundation for AI-assisted operational analysis (Open WebUI)
-
-## Reporting
-
-- Scheduled health summaries delivered to a private notification channel
-- JSON status endpoint for external tooling or scripting
+- **Discord notifications** — scheduled daily health summaries delivered to a private Discord channel via webhook
+- JSON `/status` endpoint for programmatic consumption by external scripts or tooling
 
 ## Security
 
-- All action endpoints require authentication
-- Higher-risk actions gated behind an approval step
-- Every action attempt is logged for auditability
-- **Screenshot Mode** — a one-click, client-side toggle that redacts IPs, MAC addresses, hostnames, and usernames so the dashboard can be safely captured for documentation or sharing (see [screenshots.md](screenshots.md))
+- **Tailscale remote access** — all inter-host communication runs over a private Tailscale overlay network; no ports exposed to the public internet
+- All action endpoints require a private token passed via a custom request header
+- **Rolling event log** — full audit trail of every action attempt, successful or not
+- Higher-risk actions gated behind an approval step rather than executing immediately
+- SSH calls use short connect timeouts and batch mode to prevent a single offline host from hanging the dashboard
