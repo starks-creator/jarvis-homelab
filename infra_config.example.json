@@ -1,0 +1,51 @@
+{
+  "_comment": "Copy this file to ~/jarvis/infra_config.json and fill in your Tailscale IPs and RustDesk IDs. This file is safe to commit — it contains no real addresses.",
+  "machines": {
+    "mini_pc": {
+      "label": "Mini-PC",
+      "role": "AI + Automation Hub",
+      "tailscale_ip": "100.x.x.x",
+      "cockpit_port": 9090,
+      "services": ["docker", "ollama", "open_webui"],
+      "status_key": null
+    },
+    "dell": {
+      "label": "Dell Server",
+      "role": "Media + Storage",
+      "tailscale_ip": "100.x.x.x",
+      "cockpit_port": 9090,
+      "services": ["docker", "jellyfin", "arr_stack"],
+      "status_key": "dell_server"
+    },
+    "proxmox": {
+      "label": "Lenovo Proxmox",
+      "role": "Hypervisor",
+      "tailscale_ip": "100.x.x.x",
+      "web_port": 8006,
+      "services": ["vms"],
+      "status_key": "lenovo_lab"
+    },
+    "hp": {
+      "label": "HP Windows Lab",
+      "role": "Windows 11 Pro",
+      "tailscale_ip": "100.x.x.x",
+      "rustdesk_id": "",
+      "services": ["windows", "rustdesk"],
+      "status_key": "hp_dc01"
+    },
+    "gaming": {
+      "label": "Gaming PC",
+      "role": "Bazzite Linux",
+      "tailscale_ip": "100.x.x.x",
+      "services": [],
+      "status_key": "adrian_pc"
+    },
+    "laptop": {
+      "label": "Laptop",
+      "role": "Fedora KDE",
+      "tailscale_ip": "100.x.x.x",
+      "services": [],
+      "status_key": null
+    }
+  }
+}
